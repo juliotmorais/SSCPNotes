@@ -1,0 +1,224 @@
+rdp is port 3389
+netbios is 137 138 139
+smtp is 25 to send
+pop is 110 to get 
+imap is 110 to get
+stateful inspection - tracks open connection
+web app firewalls protect gainst xss and web app attacks
+load balancers deal with balancing requests, ssl certificate management, url filters, and other web app security tasks like limiting access to parts of websites
+proxy servers can d o anyomization and content filters
+gws are similar but more security, can block attacks
+vpn endpoints can be fw routers servers or vpn concentrators
+vpn traffic are resource heavy, concentrators are best if you have alot of traffic
+
+IPSEC- better for site to site but hard to configure
+SSL/TLS - better for remote
+
+signature detection, most effective, antivirus uses this, if new attack it fails, low false positive, its a black list
+anomoly detection, tries to build model of normal activity, can have high false positive, its like a white list
+anomoly detection = behavior detection = heuristic detection
+
+utm-unified threat management, combining sec stuf like network attack protection, filters, routing, vpn, ID and IP, URL filter, content inspection, malware inspection, email/spam filter
+
+cdn-content distibution network , similar to load balancer, but you leave it up to another entity for you
+
+traffic shaping, qos, quality of service, what kind of traffic should be prioritized
+WAN optimization
+deduplication -only send  data once,
+compression, caching, latency optimization
+good for multiple sites
+
+ICANN- internet corporation for assigned names and numbers
+ARIN,APNIC,AFrinic,lacnic, ripe ncc
+
+4.3 billion possible ip addresses in ipv4
+nat, private ips, and ipv6 fixed shortage
+10.x.x.x range
+172.16.x.x-172.31.255.255 range
+192.168.x.x range
+
+pat is similar to nat, but uses ports instead of private ip addresses
+
+network border
+best place for firewall might be inbetween internet,dmz and intranet
+
+span ports copy all traffic on switch
+span port on aggregation switch wont show traffic between access switches under it
+aggregation/distribution switches connect downstream access switches(connected to users) to eachother
+SIEM security information and event management, uses AI, good near systems generation records
+vpn concentrator, put on own vlan, can determine remote user
+ssl accelerator, handle crypto work for TLS connections
+load balancers
+SSL accelerators and load balancers are probably in DMZ most liekyl
+ddos mitigation, 
+
+Network Access Control, NAC, intercepts traffic, verifies that user can connect before communication
+uses 802.1x authentication, supplicant, does nac stuff
+switch that device connects to is the authenticator for supplicant
+backend authentication server does authentication for all servers
+
+user with nac supplicant conncets to network,
+supplicant gives authenticatior with credentials 
+authenticator gives it to authentication server with radius
+if okay auth. server says OK radius message to authenticator 
+authenticator allows user to access network
+if NOTokay reject radius mesage is sent
+
+NAC can also do posture checkign and role based access, identity based
+students role may be placed on student vlan
+posture checks check for antivirus software, valid signatures 
+if posture fails, it will be put into quarantine vlan where it can patch up
+
+radius 
+remote access dial in user server
+centralized, still used, uses UDP, not encrypted
+
+TACAS
+cisco
+terminal access controller acess control system
+xtacacs
+tacacs+
+uses tcp, encrypts
+
+radius and tacacs+ is commonly used
+
+Remote network access, remote shell- commandline, remote desktop -graphical access
+telnet, ssh
+ssh name@xxxxx.xxx, ssh -i uses a certificate
+RDP uses full encryption to desktop access on windows
+
+virtual desktop, IdentityaaS,SoftwareaaS, PlatformaaS, InfrastructureaaS
+application streaming, screen scraping provides access to mainframe
+SDN software defined networking, uses code to program network
+control plane-respoinsible for makign routing and switching things happen
+data plane - actually moves stuff around
+sdn seperates with controller to decide and programs it
+
+port isolation and private vlans are the same, used in hotels, do not connect to other devices on same switch
+
+defense in depth, mulitple overlapping sec controls
+eaves dropping:
+vpns, tls, vlan segmentation,
+access control: NAC, role appropriate vlan, mac filtiering, port security, 
+perimeter:
+ACL,ips/ids, firewall
+
+Voice over IP voip, telephony
+voice to digital form for IP
+encryption distorts voice
+seperate vlans for voice is a good idea instead of encryption, NAC is good here
+
+XMPP extensible messaging and presence protocol, jabber, open source
+SMS, short message service, texting, no encryption, easy to spoof,
+ third party apps are good like apple,Line, whatsapp, signal
+ 
+storage networks, 
+NAS network attached storage, uses CIFS(file shares) and NFS(linux file shares)
+SAN storage area networks, larger than nas
+
+SAN use raw storage instead of file system, connected to device over network, uses fibre channels
+NAS looks like file server
+
+fibre channel-fiberoptic between SAN and devices
+fibre channel over ethernet -replaces fiber optic with ethernet links, slower
+iscsi-uses scsi over network connection
+
+storage traffic best on dedicated vlan or infrastructure, carefully trunk or vpn it
+
+shadow rule - rule that will never be implemente due to top diwn rule order
+promisuous rule, too much access given, ,aybe by lazy or typo
+orphaned rule-  rules never taken off of  system, but not intended to be used
+fw rule maangement and review it often
+
+standard ACL- based on ip address
+access-list number permit/deny source mask
+access-list 1 deny 10.3.1.0 0.0.0.255 , this blocked 10.3.1.x range
+
+extended access control list, furthers it with src/dst ports, named acls, src/dst ips etc
+
+firewalls are better than routers for access control, fws have more rule capabilities, more sec, integrate with ids/ips better, 
+
+vlan pruning-limit unecessary exposure of vlans by limiting trunked switches
+vlan hopping-changing to a different vlan by pretending to be a switch and asking to trunk to get into a vlan
+you should deny automatic vlan trunk negotiation to prevent hopping
+port security, limits mac adddresses connected to ports
+static port security, most secure, manually confugre valid MAC addresses
+dynamic - uses sticky so switch remembers the first mac address and permit only that one
+
+flooding attacks, dos
+SYN flood, send a bunch of syn connection requests, BUT do not answer return syn/ack so the other side is left waiting
+MAC flood, flood lots of mac address so it fills mac addresses
+flood guard is a good preventative, and port security too
+
+routing loops, broad cast storm,
+STP spanning tree ptocol is good to prevent loops
+
+firewall logs, lots of details about times and rules and type of connection, detective
+netflow, is network traffic logs,(like capture in wireshark)
+SIEM uses AI to compile and put stuff together, helps analysis
+
+snmp, simple network management protocol
+agen tthat runs on device, 
+when amangement wants to communicate with agent,  it uses getRequest and gets back snmp response
+SetRquest is to configure agent, respoesn says if sucessful or not
+Traps are sent by agents to tell about events to SNM device
+SNMPv3 IS SECURE, Eearlierversion are NOT secure
+
+data theft - confidentiality
+defacement - integrity
+dos - availability
+
+botnets to hide attacker
+smurf attack- send ping with src as victims ip address to many places, victim gets echo request flood
+amplified ddos, attacker sends small request to many ppl, victim gets large replies
+reply/request = amplification  512 bytes/64byes = 8x amplification
+
+eavesdropping, MITM, manin the middle, network device tap, dns poisoning, arp poison, 
+replay attack, prevented with session token, replay is DOS and eavesdrop
+xmas tree packet, all bits set to 1, some systems cant handle
+depending on response, system can be identified
+dns posioning, changing dns server mapping to direct to another bad server
+arp poisoning, points to wrong mac address, only works on local networking
+typosquatting
+
+wifi is a set of standards for radio frequency and tramistters and recievers, uses a chip, WAP, wireless access points, 
+802.11 2mbps
+802.11b 11
+802.11h 22
+802.11n 600
+SSID broadcasting, mac filtering for wifi but is time consuming and ineffective if they have sppofing
+vpn is good on a public connection
+
+no encryption- BAD
+WEP - wired equivelent privacy, susceptible to attack
+WPA- uses TKIP, teporal key integrity protocol which changes encryption key for each packet, secure
+WPA2 is best, usses CCMP 
+PSK-preshared key, usually on home router, password on router,64 hexadecimal string or 8-13 characters, uses key stretching to turn into 64 hexadeximal, if changes ppl have to reinsert, cant revoke ppl who left
+Enterprise authentication, uses username and password, EAP
+LEAP-lightweight EAP, uses chap, cisco, NOT SECURE
+EAP-exensible authentication protocol, broad framework, secure and not secure, depends
+PEAP-protected peap, eap+TLS
+Captive Portal- authorization page like starbucks wifi
+
+attena -
+omnidirectional antenna, donut shape, rubber duck 
+directional - focuses in one direction, wave
+
+wirless site survey for best wifi placement spot based on physical and radio signals
+
+WEP, wired equivelent privacy, 
+WPA -wifi protected access, TKIP, temporal key integrity protocol + RC4 128 key, some attacks , somewhat secure, wpa2 is better
+WPS, wifi protected setup - home, 8digit pin password, cant change pin ever
+latest encryption is best
+
+propagation attack, pulling signals out of the air, jamming, interferance, emp atack, pulling signal from air or copper wire, war driving, war chalking, blue snarf(force pair or taking data), bluejack(sending unsolicited message),
+
+rogue/evil twin- fake wifi access point, bypass configs, can mess up others
+built in intrusion detection, unknown  radio waves, handheld tools to pinpoint
+evil twins look liek legit wifi spots, but can redirect to phishin, like a watering hole
+karma toolkit makes evil twins
+
+nfc-near field communication, short range, bluetooth
+bluejacking-spamming with bluetooth, spam/phishing
+bluesnarfing-force pair, grants access/pulls info from device
+disable if not in use, apply firm ware update

@@ -1,0 +1,85 @@
+building an incident response team
+NIST 800-61
+NIST, national institute of standards and technology
+develop an incdient response plan
+think through the incident response process and document it
+Incident Response plan:
+	statement of purpose, stategies and goals, apprach, communication, senior approval
+COmmunications plan: limit external communication and content to trusted parties, to prevent news and hackers from knowing.
+Involving law enforcement needs CAREFUL consideration and are held to different standards, secure your channels
+Isolate an issue like a first responder
+first responder main priority is to contain damage
+escalation to appropriate level for responce, report, triage-low,med,high
+low-minimal impact, usuall handled by first responder
+moderate- medium impact,prompt notification to management
+high- ciritical, immediate ful response, incident resposne mobilization
+containment strategy-damage potential, evidence preservation, service availability, resource requirements,rexpected effectiveness, solution timeframe
+balance business needs and security objectives
+attackers may detect your preventative actions and may speed up, destroy or flee
+phased apprach to recovery and reconstitution
+learn from the incident and plan for future events
+NIST Incident REsponse Process=Preparation,Dection/analysis, containment/eradication/recovery, post incident activity
+validation process that issue is over, no weird leftovers, review accounts, get rid of breached accounts
+Operational Investigation-investigate issues that are happening,
+	just fixproblem
+Criminal Investigation-done by government agencies, 
+	high possible standard,
+Civil Investigation-non criminal, just between 2 parties, contract
+	disputes, not so high standard of evidence
+regulatory investigation-done by government for regulations
+Interviews are voluntary, Interrogations are not
+Evidence-
+	real:object 
+	documentary:written info, needs to be authenticated, original is best
+	testimonial:witness, direct witness or expert opinion
+	nohearsay admitted
+digital forensics-tech investigations,criminal, collect preserve intepret digital info from a device, never take an action that contaminates data
+volatility:how long the data lasts, hard drive is better than RAM
+Order of Volatility:Network traffic,Memory Contents,System/ProcessData,Files,Logs,Archived REcords
+Take an image of the evidence, then use those images for investigation
+Writeblockers is a device that sits between analysers and prevents write attempts to the evidence
+hashes never change
+screenshots, memory chart, process table
+network forensics
+netflow data shows timmestamp and who ip addresses and ports,no payload
+intellectual property
+coding styles and signatures
+embedded devices like an alexa can be used as evidence, but needs a subpeona
+chain of custody to see who has custody of evidence and make sure its not compromised, date of collection,name of who and PII about them, logs of events, transfer, tamper resistant to show if its been opened
+Whoever needs to know of incident shouyld be notified, keep records of communication
+Who needs to know?Chief infomation officer, director, reponse teams, officers, owners, 
+sometimes external parties need to know, but be careful with this and what wyou say
+US-Cert is a federal report team
+Formal Incident Report
+ediscovery- presevation, collection, production
+	if there is a charge or litigation, both sides need to preserver
+	their info first
+business continuity planning-
+	bcp, business activities, systems, and controls that are covered
+bia, business impact assessment, identifies and prioritizes risk
+	includes ALE with what kind of threat
+BIA Control,s Remove SinglePointOfFailure, ensure redundancy
+HighAvailability- multiple systems liek redundancy
+Fault Tolerance- Protect a system from failing in the first place
+Load Balance-Spread demand across systems
+common poitns of failure -
+	power supply due to many parts, sometimes 2 powersupplies are good.
+	protect against disks breaking, use RAID to prevent
+RAID lvl 1, disk mirroring, 2 disks, same data on both
+RAID lvl 5, uses 3 or more disks to store data and parity information
+qos-quality of service, services 
+disaster recovery-contain damage, recover capacities, assessment
+RTO-recovery time Objective-max time it should take to recover service
+RPO-Recovery Point Objective-max time data may be lost
+Backups-tapes, disk-to-disk,cloud
+full backup, differntial backup (data that was added/modified since last full backup), incremental backup (data modified/added since last full/incremental backup)
+Validation for BackupVerification,regularly test them
+hot site- fully operational, stocked with euqipment and data, expensive
+warm site- has hardware/data, but not running, so cost is inbetween
+cold site - empty center, core equpment, but no server/data, inexpensive
+offsite backups
+DisasterRecovery Testing, validate it, identify updates, 
+disaster recovery testing types- 
+  readthrough(checklists), walkthrough(table talk),simulation(testing)
+full interruption test may disrupt business
+parrallel test needs activate DR site

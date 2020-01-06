@@ -1,0 +1,136 @@
+security triad
+confidentiality-
+	protect info and systems from unauthorized access
+integrity
+	protect against unmodified modifications
+availability
+	protect and ensure access/backups
+DOS attacks, attack the availability
+sttenography, hide info in other files or images
+hash  is a data digest used to insure data integrity
+digital signature
+creation-
+	compute hash value of message, encrypt hash with senders private key
+verification-
+	decrypt with senders public key
+	check hash against message
+non-repudiation - user cant say they didnt do it
+redundancy, high availability, fault tolerance
+patching
+accountability- logging who does what and when for non repudiation
+centralized log server, secure
+privacy compliance
+hipaa - healthcare privacy
+phi patient health information
+ferpa -student educational records
+glba - financial security regulations
+coppa- children privacy online
+gdpr - european privacy law with all eu citizens workin with eu citizens
+employee privacy, minimzation-only get needed info, limit access, encyption, masking
+accounting groups - vendor creation and payments are seperate
+devs cannot put their own code into production, it is reviewed by a seperate team
+two person control
+physical/media asset management and life cycle, putting in request for item, item is reviewed, ordered, identified and labeled, put into use, returned to management and possibily recycled
+config management - request for change, description of change, expected impact, risk assessment, rollback plan, identity, proposed implementation - it must be reviewed
+baselines - snapshots of system at a point in time
+version control
+software licensing-acceptable use, shrinkwrap with pua agreements, click through agreements
+data at rest, data in motion, big data(bigger than normal databases)
+data classification for levels
+military- top secret, secret, confidential, unclassified
+business- highly sensitive, sensitive, internal, public
+storage-physical, acess controls, encryption
+transmission, what kind, encryption, locations, methods
+lifecycle - min/max data retention, disposal/wiping
+data owner - ownership, responsibility, business leaders
+data steward - day to day governance, delegated responsibility
+data custodian - store and process info, usually it staff
+10 principles ofdata privacy-GAPP generally accepted privacy principls
+1.management 2.notice/contact 3.choice/consent 4.collection
+5. use/retention/disposal 6.access 7.disclosure 
+8.security 9.quality 10.monitoring/enforcement
+minimal collection, monitor third parties
+security baseline- minimum usually used as a general cover or highest level needed, needs to be monitored
+Vendors, government, and organizations have security standards
+good idea is to use encryption like aes 128 but organization can modify to use stronger 256
+standards can be referenced and modified
+file permissions-ntfs permissions,
+read=r, write=w,execute=x, user owner=u, group owner = g, others = o
+chmod[ownership]{+/-}{permissions} {file}
+chmod o+r PublicFile
+AEScrypt
+you can encrypt a full hard drive
+mac -file vault
+windows - bit encrypt
+HSM-hardware security module, used to encrypt hardware
+TPM-trusted platform module -disk encryption
+cloud data sec issues-encryption, access control
+data classification-sensitivity,criticality,labeling,
+securitycontrols-
+preventative controls-stop a problem from even happening, firewall
+detternt controls - persuade an attacker from attacking, dog
+detective controls - identify breaches during or after, camera
+corrective controls- fix issues after, backup
+technical controls- tech use for protection, antivirus
+admin controls- human driven process for protection, screening
+physical control
+false positive - false alarm, issue reported when no issue
+false negative - fails to trigger alarm when issue happens
+COBIT-control objectives for IT, business focused control framework
+ISO27001 - common standard of control framework
+NIST 800-53- government standard control framework
+SIEM system
+back up data, test that you can restore data
+account reviewing, screening, testing
+keep track of auditing, version history
+Management and operational controls - reviewing and auditing
+process data -electornic and paper records
+management oversight, security metrics, 
+KPI-keyperformance indicator, show success of program, looks back
+	decrease in breaches, and impact, and increase of SLA and controls, number of training events, number of outages, number of issues
+KRI-Key risk indicator, show future risks, forward looking
+	impact, implement, measure, support, reliability, sensitivity
+PCI DSS-Payment Card Industry Data Security Standard
+internal auditor - reports to management
+external auditor - outside groups that come in
+audit findings - statements of noncompliance, must be fixed
+external auditors - statements of weakness, but fix if you want
+control testing should take place often, learn to manage exceptions
+compensating control - how to deal with risks of other controls
+	- tall wall, but gate is low, THEREFOER put a guard at gate
+security policy frameworks - 
+	policies, dont be too specific,mandatory
+	Standards, details of controls,mandatory, referenced from other places
+	guidelines, optional
+	procedures, depends on company
+Info Sec Policy- 
+	individual who is responsible for sec
+	sec roles and responsibilities
+	authority for creation of sec standards
+	authority for incident response
+	process for policy exceptions and violations
+Private Policy- 
+	how does company collect use and store information about users
+Acceptable Use Policy
+	expectations of users use
+least privilege, seperation of duties, mandatory vaction, job rotation
+PII - personally identifiable information
+compliance programs-laws,regulations,standards,
+user habits, clean desk policy, tailgating,
+ BYOD-bring your own device, COPU-Company owned personally used
+chain of custody
+physical security, data center, media storage, back up, wiring,
+air temp, cooling equipment,  64.6 F-80.6F, humidity, 
+dewpoint 41.9-50F, HVAC, hot and cold aisle, cold=front,hot=back
+exinguishers- 
+	a=common combustible
+	b=flammable liquids
+	C=electric
+	d=heavy metal
+	K=kitchen
+wet pipe = water in pipes
+dry pipes= no water in pipes until fire
+electricmagnetic interference- disrupt or spying
+
+
+	

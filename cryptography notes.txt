@@ -1,0 +1,281 @@
+cryptography, using algortims to change info into non readable
+encryption, decryption, ciphertext
+symetric encryption-encryptionand decryption use same key
+asymmetric algortihms use different keys/key pairs
+
+symmetric algortims have a shared secret key between 2 ppl
+to find out how many connections you need between people use:
+(n(n-1))
+to find out how many keys you need use:
+(n(n-1))/2
+
+if bob sends a message to alice, he uses alice's public key, and alice uses her private key to decrypt to make sure that she reads it, this is for confidentiality assurance
+
+to protect integrity of the message and make sure it actually came from the person, bob would use his private key which alice would decrypt with bobs public key
+Ciphermode- how it encrypts
+ECB Electronic CodeBook
+	breaks up the message into blocks
+	uses enctyption for each block
+	not good since it uses same key
+CBC Cypher Block Chaning
+	break up into blocks
+	uses initualization vector with XOR
+	uses algortim to encypt
+	then takes the first cipher text block to initialize the next block,
+	encrypts both encrypted block and next block
+COunter Mode CTR
+	starts with blocks
+	also starts with random value called nonce, and a counter that starts at 0
+	value created by counter and none are encrypted and is XORd with first message block
+	counter increases and process repeats from start
+Galois Counter Mode GCM adds authentication
+security through obscurity is not good, how algortims works should be vetted and known and published by security community
+longer the key the better but performance goes down
+OneTimePad, sender and reciever had identical pads, using letters as numbers a-z~1-26
+there isnt really any repetition, so in theory its unbreakable as long as its used only once
+its hard to use because both parties need to physically have it
+
+NIST Cryptographic Lifecycle
+initiation, development/aquisition, implementation/assessment, operations/maintenance, sunset
+
+DES Data Encyption Standard
+64 bits of message, runs it through Feistal function 16 times
+Inside Feistal:
+Takes 32 bits and comabines with 56bit encryption key
+that cobination is broken up into 8 segments with 8 different substitutions with transposition
+Not really used anymore, not secure, can be attacked
+Its symmetric, its block, it works on 64 bit blocks, key is 56 bits
+
+3DES Triple DES
+Feed message into DES with 3 different keys
+Keys can be not equal to eachother =112 bits, safe till 2030
+Keys 1 and 3 can be the same, =80 bits
+If all keys are the same, its essentally the same as DES
+its symetric, 64 bit blocks, best key length is 112
+
+AES, Blowfish, Twofish
+Advanced Encryption Standard - Rjeindal, uses substitution and transposition
+aescrypt.com
+aes -e -p password -o declaration.aes declaration.txt
+aescrypt -d -p password declaration.aes
+same key is used to encrypt and decrypt
+symmetric algorthm
+block cipher of 128 blocks
+key length 128,192, 256
+Secure today
+
+Blowfish, replaced DES, uses feistel(similar to DES)
+substitution and transposition
+64 bits
+key length between 32 and 448
+not secure
+
+Twofish, uses feistel, uses substitution and transposition
+128 bit block cipher
+key length of 128,192,256
+secure today
+
+RC4
+1987
+Network encryption
+WEP and WPA use it
+SSL and TLS use it
+pseudorandom keystream
+same key to use, not completely random due to use of key
+no longer secure
+symmetric, stream cipher, 40 to 2048 key kength
+
+stenography-hiding information in plain site in another format, data inside of a photo pixel
+
+RSA Cryptography
+still used today, made 4 years ago
+Ron Rivest, Adi Shamir, Len Adelman
+makes a key pairs, asymmetric
+selects 2 large prime numbers to make keys
+Sender encryptics with Recievers Public Key, Reciever decrypts with own private key
+slow, not for long, usually used to create a secure channel for symmetric key messages
+key length 1024-4096
+
+PGP Preety good privacy
+still used today
+uses public and private keys
+asymmetric
+Generates random key, encrypt data with key, then encrypt both encrypted data and key
+Decrypt with recievers RSA private key to get encrypted data and key, use key to decrypt data
+OpenPGP standard
+PGP -commercial
+GnuPG, free version, gpg --gen-key, gpg --armor --export bob@reciever.org >bob.pub
+exchange by digital certificate or email
+Relies upon other encryption algorithms, it's a framework
+
+ECC ecliptic curve + quantum cryptography
+prime number, numbers devisible by 1 and themselves only (excluding one)
+does not use prime numbers
+uses eliptic curve discrete log problem
+quantum uses quantum mechanics
+ecc doesnt not protect against quantum attacks
+quantum may be strongest in the future
+
+keys should be generated randomly
+verify identity before issuing key
+end of life for key, should have a life span, should be able to be revoked
+
+symmetric exchange
+Out of band Key exchange - face to face, physical mail, telephone call BUT timeconsuming
+Inband key exchange
+
+Diffie Hellman Key exchange
+Example with COlour
+Alice and Bob pick a common color that is the same Yellow, and Yellow
+Alice and Bob pick their own secret color Red and Blue, Alice and bob dont know the other
+Then then mix it, they tell eachother the result, ALice is orange  Bob is green
+Then they mix the secret color in again and get brown, both are brown
+ATTACKER only sees yellow is shared, and then orange and green, mixed color and final color brown is unknown
+
+Example with numbers
+p=3 (must be prime)
+g=7
+Alice and Bob agree to these
+Alice picks secret number a=5
+Bob picks secret number b=8
+Use algorithm A=g^a mod p
+Alice'S first result is  A=g^a mod p = 7^5 mod 13 = 11
+Bob's first result is B=g^b mod 13 = 7^8 mod 13 = 3
+Alice then takes B into S=B^a mod p = 3^5 mod 13= 9
+Bob then takes A into S=A^b mod p = 11^8 mod 13 =9
+S is the encryption key
+Attacker only sees 3,7 and then 11 and 3
+
+LARGE values for p and g are chosen though
+
+Elliptic Curve Diffie Hellman
+no prime factorization, uses elliptic curve problem
+
+Diffie Hellman Groups
+1 768bit insecure
+2 1024bit insecure
+5 1536bit insecure
+14 2048bit secure
+19 3072bit secure
+20 384bit ecc secure
+21 521bit ecc secure
+24 2048bit ecc secure
+
+Key Escrow and Recovery
+Allowing government to access keys with court orders
+escrow keys in case of terrorism etc
+Clipper chip allows government access to encrypted communications
+recovery agents, allows internal access to lost keys if password is lost
+
+key stretching(strengthen and lengthen keys)
+salting- adds a value to exncryption key to make it complex
+hashing- adds time to the verification process requiring more math)
+
+PBKDF2 Password Based Key Derivation Function v2, stretched key, used 4000times
+bcrypt, stretch with blowfish
+
+TrustModels, personal, web of trust WOT, 
+WOT=certificates signed by people they know personally, peer to peer
+PKI and DIgital certificates
+Certificate Authorities, CA, are basis of PKI,PUblic Key Infrustructure
+CA are trusted third parties that vertify identity of indiciduals or orgs and issue digital certifiactes with identity and public key of that individual or org, similar to DMV
+Anyone trying to use your digital certificate doesnt have your private key
+
+Hash Functions- one way function, fixed, always same length regardles of input, always unique, may fail if reversible, not collision resistant(2 inputs with same output)
+MD5 Message Digest 5, replaced MD4, MEssage digest means Hash, same, MD5 is 128 bit,
+MD5 is NO LONGER SECURE
+
+SHA-1 is 160bit value,  NOT SECURE
+SHA-2 is 224,256,384 and 512 bit vlue, similar to MD5 and SHA-1, BUT safe for use
+SHA-3 different from previous hashes, makes hash length based on user picked
+RIPEMD, Race Integrity Primitives Evaluation Message Digest, 128,160,256,320 bit hashes
+RIPEMD 128 bit version is NOT SECURE, others are okay
+
+Digital signatures use asymmetric for integrity,authentication and non repudiation
+depen on colission resistant hash function, asymetric crypto
+uses private key for encryption and public key for decryption
+not for confidentiality, its for ensuring the person who sent it, send it, and that
+the message wasnt tampered
+
+creating certificates uses x.509
+alice makes key pair with method of her choice
+makes message called CSR, certificate signing request
+sends certificatesinging request to certificate authority or RA (registration austhority)
+they prove the validity with alice and puts public key in x.509 certificate
+ca uses its private key for encryption of the certificate for official certificate
+user then gets official certificate
+
+openssl req -new -newkey rsa:2048
+key is then made, and you can send it to a CA of your choice
+
+revoking digital certificate
+CRL certificate revocation list, placed serial of the certificate on the revoke list BUT THIS IS NOT A GOOD IDEA TOO LONG
+OCSP OnlineCertificate Status Protocol, CA provides real time service to see if its  revoked
+Most browsers use OCSP, except CHrome which has its own system
+Certificate Stapling
+OSCP uts a burden on OCSP services, processing all requests
+Standard OCSP, user goes to web server, and server sends certificate to user, user then sends ceritifacte to CA ocsp server on certificate to validate it
+With stapling, the web server does the confirmation with the CA OCSP server itself, then web server can usuall use the same validation for 24 hours
+
+TLS , USES other algorthms and hash functions known as cipher suites
+client sends request to server
+server checks cipher suites with what it can use
+then then decide to use something liek SHA 256 and RSA
+server then sends client its certificate
+client confirms it with CA
+client makes symettric session key for server, ecnrypts it with servers public key and sends it
+server uses private key to decrpt the session key 
+Channel is made with asymmetric keys, anything else is done with symmetric keys
+Session keys = Ephemeral keys
+SSL was predecessor to TLS, should no longer be use, NOT SECURE
+do they mean SSL? or TLS?
+
+IPSEC
+Internet Protocol Security
+set of protocols for TCP/IP, can use both
+1.ESP Encapsulating Security Protocol - gives confidentiality and integrity protection for packets
+2.Authentication Headers - provides integrity for packet headers and payloads 
+SA Security ASsociations, similar to cipher suites in TLS, identifies crypto algorithms
+supports Site-SIte VPNS and End-user VPNs
+
+https is more secure than http
+SSH is more secure than telnet
+ssh -i key.pem xc2-user@xx.xxx.xx.xxx
+SFTP and FTPS is more secure than FTP, SFTP- Secure FTP = ftp+ssh,FTPS- FTP Secure = ftp+tls
+SCP- SEcure COpy Protocol - secure commandline file transfer with ssh
+
+email is insure protocol
+S/MIME  offers implementation of PKI for email
+TFTP is another version of FTP, its also insecure
+
+DKIM- domain keys identified mail
+adds digital signatures to sign outbound emails
+uses keypairs
+publishes public keys with dns, probably on A record
+helps to fight spam
+
+TOR and Perfect Foward secrecy
+The Onion Routers, relay nodes and encryption
+Alice opens tor browser, 
+brower opens list of nodes, MANY nodes, tor nodes are volunteered
+nodes only know who is before and after
+alice connects to node 1, node 1 knows alice, and knows node 2
+node 1 connects to node 2, node 2 only knows node 1 and node 3
+node 2 connects to node 3, node 3 only knows destination and node 2
+node 3 connects to destination server, server only knows node 3
+process is reversed on way back
+Perfect Forward SEcrecy makes sure nodes only know before and after
+Hidden sites use weird .onion urls, 2 way privacy
+
+brute force attacks = known ciphertext attack
+size of keyspace　56 bit des key has LOADS of keys
+128 and 256 have even bigger ones
+
+frequency analysis, detects patterns in cipher text in the case of substitution
+cryptanalysis
+known plaintext attack attacker uses knowldge for other attacks
+chosenplaintext attack, attacker uses it to make new attacks
+
+
+
+

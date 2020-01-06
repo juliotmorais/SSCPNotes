@@ -1,0 +1,84 @@
+Identities and Attributes
+Identify, Authenticate, Authorize
+Subjects will access Objects
+Identification
+	usernames, access cards, magnetic stripe card vs smart chip 
+	card, something you are, know, have
+	biometric-you are
+	FAR and FRR
+Authentication - proving your identification
+	with what you have, know, are
+	biometrics
+	FAR-false acceptance rate
+	FRR-false rejection rate
+	CER-crossover error rate, average of FAR and FRR, lower the better
+	multifactor authentication, soft token gen, keygen, hmac, hotp(hmac one time password)=soft token onetime pass
+PAP-password authentication protocol -clear text auth
+CHAP-challenge handshake auth.protocol
+	both sides know password, server sends client random value
+	client combines password and value, hashes it, 
+	and sends it to the server, server hases the password and value, and compares hashes to authenticate
+Federated Identity Management+SSO - Sign on with an account
+	like google id OR signon once with one account across
+	several services
+oneway trust- A trusts B, but B does not trust A
+transitive trust- A trusts B, B trusts C, therefore A trusts C
+Network Border firewall, intranet, dmz, internet, extranet
+Kerberos- ticket based
+	client sends auth req to auth server
+	auth server sends Ticket Granting Ticket(TGT) to client
+		this is excrypted with password of TicketGrantingSErver
+	auth server sends Ticket Granting Server SEssion Key excrytped with password of client, auth fails here if false
+	Client sends Session Key to TicketGranting SErver
+	Client sends TGT to TicketGrantingServer which decrrypts it
+	TGS sends Client/Server Ticket and Client Server Session Key
+	CLient sends Client SErver ticket to Service with Authentication
+	Server decrypts  authentication with ticket
+LDAP-lightweight directory access portocol, centralized service
+	used by AD with kerberos
+Ports- 88 kerberos
+	389 - LDAP 
+	636 secyre ldap
+NTLM - old authentication for microsoft, before kerbeos
+	used hash based liek chap
+	weak encryption, weak against hash attack
+Cert Based Auth
+	contain copy of users public key
+Key Based Auth
+	private key, public key
+	1. connection request
+	2.random challenge value
+	3.challenge encrypted with private key
+	4.connection authenticated
+	other uses-ssh, smartcards, network access 802.1x
+least privilege, seperation of duties, job rotation, account life cycle, mandatory vaction, standard naming convention
+account life cycle- 
+	provisioning, modify roles and permissions, deprovisioning
+GPO-group policy objects-settings for a group, that you put
+	users into
+password policies,length, 8 char min, complex, char types, 
+	expiration, history, reuse, brute force, disablement, recovery
+	security questions
+role management-permissions, windows security groups, revocation, generic accounts
+account monitoring - inaccurate permissions, privilege creep,
+	illegitamite use, user access review,strange activity, 
+	acitivity flagging
+provisioning-new credentials for use
+deprovisioning -removing credentials for use
+authorization - 
+	least privilege, seperation of duties(atleast 2-4 ppl, privilege creep,
+MAC-mandatory access controls-OS enforces policies that users 
+	dont modify, SELinux
+DAC-discretionary access controls-
+	admins enforce policies and permissions, the norm in most cases, windows NTFS
+Access Control Lists - 
+	Resources owners set DAC permissions, full control, read, 
+	write, modify, execute
+implicit deny-usually at the bottom
+role based permissions/attribute based permissions-
+	make sure they dont clash with seperation of duties
+location based controls, time based controls, behavioral based controls
+
+	
+
+	

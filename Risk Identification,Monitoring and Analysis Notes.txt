@@ -1,0 +1,134 @@
+Risk Management
+Risk Avoidance, Transference(insurance, reputation doesnt work here though), Mitigation, acceptance
+risk recasting = changing impact of a risk, risk management
+quantitative risk assessment-
+	AV-Asset Value-original cost OR depreciated cost OR replacement cost
+	EF - Exposure Factor - How much impact
+	SLE - Single Loss Expectancy
+		AV * EF = SLE
+	ARO- how often does it happen
+	ALE - How much money expected to lose each year
+		SLE * ARO = ALE
+	MTTF - mean time to failure - average time till it breaks
+	MTBF - mean time between failures
+	MTTR - mean time to repair - average time till repair
+system authorization
+control assessments and effectiveness
+NIST SP 800-37 standards of framework
+Categorize information system
+Select security controls
+implement security controls
+access security controls
+authorize information system
+monitor security controls
+Risk Register- tracks risks
+	description
+	category
+	probability and impact
+	risk rating
+	risk management actions
+identify the threats-
+	asset focus, asset as basis
+	threat focus, how threat affects as basis
+	service focus, which product is affected
+STRIDE attacks
+Spoofing
+Tampering
+Repudiation
+Information disclosure
+Denial of Service
+Elevation of privilege
+Reduction Analysis - breaking a system down into smaller components
+threat modeling, repeated attacks might mean a certain deficency in defense or software, or business practice
+passive tools, observe, 
+active tools, interact, able to disrupt
+honeypot, decoy server to attract attackers and watch/log them
+protocol analyzer, wireshark
+port scanner,nmap
+vulnerability scanner, nessus
+threat- external force
+vulnerability - sec weakness
+risk - vulnerability+threat
+baseline scanner, architecture review
+penetration test - white box, grey box, black box
+CVSS common vunerabulity score
+  AV-attack vector- 
+	L-Local-physical/logical access
+	A-Adjacent-Local network
+	N-Network-remote access
+  AC-Access COmplexity
+	H-High-specialized
+	M-Medium-somewhat special
+	L-Low-No specialized
+  Au-Authentication
+    M-Multiple-multifactor authentication needed
+	S-Single-single authentication needed
+	N-None-No authentication needed
+  C-Confidentiality
+    N-None-no impact
+	P-Partial-Partial Impact
+	C-Complete-All info impacted
+  I-Integrity
+    N-None-no impact
+	P-Partial-Partial Impact
+	C-Complete-All info modified
+  A-Availability
+    N-None-no impact
+	P-Partial-Partial Impact
+	C-Complete-All systems down
+CVSS2 AV:N/AC:L/Au:N/C:P/I:P/A:P
+Remotly accessed, No specialized, No authentication, partial impact on CIA
+0-3.9 Low, 4-5.9 Medium, 6-9.9 High, 10 Critical
+Prioritization-Vulnerability severity, system criticality, infomation sensitivity, remediation difficulty, system exposure
+who to report to? cybersec team, management, system+network engineer. What is the issue?Why important? Affected?
+How crucial is the system?How is the data stored/transfered?
+How crucial is the data?How severe is the vulnerability?
+How is it exposed? What is the Attack Vector? Is remediation possible?
+Remediation Workflow-
+	Detection,Analysis,Remediation,Remediation Validation
+Automizing-open new tickets when vulnerability appears, prioritize, assign remediation, OR perform remediation automatically and close automatically
+Remediation+emergency maintenance should be covered in SLA and MOU
+Logs-Event Viwer in Windows, App Log-software messages, system log-issues with system/storage, sec log - audit failure
+logging is a detective control, technical one, and admin one when reviewed by admin
+sucessful and failed things can be logged, trends and anomolies should be noted for base logs
+SIEM security information and event management
+logs should be sent to a SIEM as a central collection point
+SIEM works with AI to detect trends
+firewall log- can detect a suspicious connection
+webserver log - can detect sql attack
+database log - can detect a large query
+router log- can detect large outbound/inbound data of dos
+Monitoring Process - Define based on needs, Establish with metrics and frequency, Implement and make reports, Analyze/Report, Respond to findings, Review/Update based on needs
+heuristic analysis - self discovery, i/e: big data spike compared to year long collection 
+investigation for something you cant explain, Rise or Drop in attacks, behavioral anomolies, availability analysis to check that its still up
+logs need regular review
+no jargon in reporting, simplify but accuratly report, use visualization like a graph, make recommendations
+Internal compliance-verify that standards are being held like antivirus on every machine
+External compliancy - verifythat laws and regulatory obligatiosn are being met
+intrests-anomalous activity, intrustion, unauthroized changes
+legal/ethical issues-browsing history, geolocation, PII
+privacy laws
+person who info is colelcted from needs to be notified
+only minimal info is ok, and also about what kind of analysis
+legal and ethical, just because you can doesnt mean you should
+code review
+developers do not put their code into production
+reviewers or other group does
+this is seperation of duty
+Code Review/Software Life/Fagan inspection
+Planning, Overview, Preparation, Meeting, Rework, FollowUp
+code tests, code review
+static code test -analyze for defects without executing
+dynamic code test- execute to verify function, output and flaws
+synthetic transaction - prescrited inputs for the testing
+fuzz testing- gives valid and invalid input to software for testing, dev supplied, script supplied, generation supplied or mutated input
+OWASP can fuzz, USE ONLY WHEN 
+APIs often interact with back end databasses so are a risk
+APIs are crucial to business ops
+misuse by users/acceptable use, hackers dont care, unexpected input, missing input, injection, unavailable, invalid input
+how to test the software? possible use cases, possible inputs, functions, lines of code, conditional branching with more ppl
+software test converage can be automated
+
+
+
+

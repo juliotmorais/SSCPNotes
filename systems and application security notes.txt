@@ -1,0 +1,162 @@
+propgation -how malware gets on system
+payload- the damaging part
+virus-general term, spread by action
+worm -no user action, spread by itself, keep system update to prevent
+RTM is first worm
+stuxnet-2010, iranian nuclear cicility, damanged uranium equipment
+trojan horse- appealing program that user puts in pc, it runs, but has bad payload
+application controls prevent it
+RAT- remote access trojan, trojan that allows remote connection from attacker
+adware-ads to generate money for attacker, redirects to differnt search engine, pop ups
+spyware-gathers information for attacker, keystroke, webbrowsing, scans cloud or hdd
+ransomware- blocks or encrypts everything until ransom is paid, cryptolocker or wannacry
+scareware- lies that make ppl think they are compromised, but arent real
+keep antimalware updated, and learn about it to recognize
+backdoor- workaround access, can be put in on purpose, but misused, hardcoded accounts, default passwords, unknown channels
+logic bomb- set to execute when a condition is met, datetime reached, file contents, api call results, employee may have it to check to see if he is still employed and will execute if he is fired
+root account,rootkits to escalate priviledges,
+user mode rootkit- run with normal user, easy to make
+kernal mode rootkit- run with system credentials, hard to write, easy to detect
+polymorphic virus-changes like a real virus to adapt, changes itself to hide
+armored virus-prevents reverse engineering of the virus, disguises it, maybe destroys itself 
+botnet- collection of infected systems, might be used for CPU power, spam, ddos, bitcoin mining, brute force
+botnet uses Command control networks to relay order, IRC, twitter, peer to peer within botnet
+1.infect system, 2.convert systm to bot, 3. infect more, 4. check in to central 5. get instruction 6. perform attack
+
+linux- /etc/passwd is the password file, it has hashes of passwords, you can remove it 
+if you have hashes, you can try to guess passwords and compare hashes later
+/etc/shadow  file can be locked down
+hashing algorithms must avoid collision and birthday problem
+brute force, dictionary attack, hybrid attack, rainbow table attack (precomputes hashes)
+watering hole attack:
+1.identify and compromise a highly targeted website
+2. choose a client exploit and bundle in a botnet
+3. place malware on compromised site
+4. wait for infected systems to contact command control server
+
+internal attackers are costly, and hard to prevent, most attacks are internetal, privilege escalation, etc, usually there are reasons they might do it, disgruntled or stressed employees, alternative entry paths
+background checks, least privledge, mandatory vacation, seperation of duty
+taking stuff home, doing other stuff, duplication of materials, weird network access, using personal stuff
+weird hours, weird contact, weird behavior
+
+social engineering:
+authority+trust
+intimidation
+consesus/social proof, herd mentality
+scarcity, get it before it runs out
+urgency, time is running out
+familiarity/liking
+education is best fix
+
+spam, phishing (steal credentials),
+ spear phishing(targeted phishing), 
+ whaling(going after higher ups with phishing),
+ pharming(using fake websites)-might use dns poisoning
+ Vhishing-voice phishing
+ Spim- instant message spam
+ spoofing-faking identity
+
+shoulder surfing,dumpster diving, tailgating
+privacy filter, shredder, education/guard
+
+security baseline, limited access, minimal, group policy objects, gpos
+for linux updating os security would be sudo yum update command, yum means update manager
+trusted operating systems are vetted by government
+
+signature detection, behavior detection, antispyware=antimalware
+windowsdefender,sophos for mac, quarantine, 
+whitelisting,blacklisting
+os security settings-limiting acceess with gpo,
+patching is good, windows updates, trusted operating systems
+AppLocker is the white/blaclister for windows for application to be blocked
+BitLocker is the full disk encryption for windows
+windows firewall is the host firewall for windows
+Windows Defender is the antivirus for windows
+firewall-implicit deny, networkfirewall, host firewall
+IaaS firewall- infrustructure, security is mostly configured by vendor,
+IDS,IPS, network based or host based, third party needs to be purchased
+
+error/exception handling, dealing with input that isnt expected
+state diagram, awaiting inputing, computing, displaying output
+unpredictable states, when expected  input it put in, can cause buffer overflow
+better state diagram, awaiting input, validate input, compute or show error, display output
+code repository, version control, code reuse
+public or private repositories
+third party code, libraries, 
+SDK is a collection of libraries, SOftware Development Kit
+digital signature, code signing is used to determine if code is legitamite
+
+verifying code signature:
+1.user downloads software,2.OS uses certificates public key to validate signature 3. OS verifies the signatures hash matches the code
+
+full encyption on ios and android with password locks
+apple touchID is biometric
+remote wiping
+
+MDM, mobile device management, device config, prevent user from changing,
+google mobile management
+MobileDeviceTracking, asset tracking, GPS
+Device Request, Ordering, recieving, initial conig, device assignment, decommissioning
+strong credentials, rely upon central authentication
+external authentication requires trsut in external organizations
+encrypt information in transit and rest, strong key management
+GeoTagging-gps, photos have coordinates usually
+
+BYOD-Bring Your Own Device, your own tech for work, 
+Old Enviornment- company provides tech and owns data
+New Enviornment - you provide tech, you own tech and your data, company own company data
+monitoring might be an ethical issue
+BYOD Onboarding, what kind of data can be stored? define requirements
+BYOD Offboarding- make sure company data is off the device
+
+COPE-Corporate Owned, Personally Enabled, Allows business and personal used -
+   its company owned, but you can use it for your own things too
+   tech is company owned, company data is owned by company, your data is yours
+
+Virtualization- 
+Type 1 Hyper visor - baremetal, runs ontop of physical hardware, VMs then run on HyperVisor
+Type 2 Hypervisor- runs ontop of Host Operating SYstem, VMS then run on HyperVisor, examples are virtual box or 
+VirtualMachine Escape-trying to escape VM to attack host, VM is meant to isolate strictly
+Patch the Hypervisor for security
+VMs are just files
+sandboxing and virtualization, testing,
+elasticity, use memory when needed, expand when needed, reduce when needed
+vm gets resources from underlying hardware
+Virtual Storage Area Network pools storage for VMs
+Virtualization platforms need to be patched too, Hypervisors need to be patched
+Physical appliances - self contained, vendor can pre config it, customer just needs to connect ot network, vendor must provide patches
+Virtual appliances run on customers already existing appliance, customers can manage on virtual platform, more cost effective
+port isolation = private vlan
+cloud computing-computing over network, felxible, scalable, 
+private cloud - dedicated, hybrid -both, public -shared infrastructure
+Public cloud uses shared responsibility model
+community clouds serve similar organizations, no cloud model is superior
+
+Public Cloud tiers -
+SaaS-Software as a service, customer buys basic computing resources, vendors runs everything, pre configs everything, example is GMAIL or DROPBOXs
+customer responsible for data, vendor responsible for DC,Hardware,OS,Apps
+
+IaaS-Infrastructure as a serive, amazon web services, Windows Azure, vendor gives building blocks and customer configures mostly everything, basic stuff is pre config
+customer responsible for data, apps, OS Vendor responsible for Hardware and DC
+
+Platform as a SErvice - PaaS, customer pruchases entire application where they can run code, customer responsible for Data and App, vendor does OS, hardware and DC
+
+CLoud services, email, dns, vpn, proxy servers
+amazon route 54 and azur routing is dns service from amazon and windows
+vpns hide gps
+
+transport encryption storage encrpytion
+cloud integrity and availability
+SLA-servive level agreement
+data portability
+data destruction
+independant audit
+
+data volume, variety, velocity 3Vs of big data
+monitor application vulnerabilities
+ARchitecture and design vulnerabilities for big data
+
+
+
+
+
